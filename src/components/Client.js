@@ -1,7 +1,7 @@
 const Client = ({client}) => {
     return (
         <div className="client">
-            <h3>{client.fullName}</h3>
+            <h3>{client.nom}</h3>
             <p>{client.numeroTelephone}</p>
         </div>
     )

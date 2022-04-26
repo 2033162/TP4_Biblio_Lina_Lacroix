@@ -1,7 +1,12 @@
-const Employe = ({employe}) => {
+import { FaTimes} from 'react-icons/fa'
+
+const Employe = ({employe, onDelete, onToggle}) => {
     return (
-        <div className="employe">
-            <h3>{employe.nom}</h3>
+        <div className="employe"
+             onDoubleClick={() => onToggle(employe.id)}>
+            <h3>{employe.nom} <FaTimes
+                style={{color: 'red', cursor: 'pointer'}}
+                onClick={() => onDelete(employe.id)}/></h3>
             <p>{employe.fonction}</p>
         </div>
     )

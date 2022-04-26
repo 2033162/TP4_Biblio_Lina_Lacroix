@@ -75,7 +75,7 @@ const AddClient = ({onAdd}) => {
             </div>
             <div className='form-control'>
                 <label>Date de l'inscription</label>
-                <input type='text' placeholder='Date de l''inscription'
+                <input type='text' placeholder='Date inscription'
                        value={dateInscription}
                        onChange={(e) => setDateInscription(e.target.value)}/>
             </div>

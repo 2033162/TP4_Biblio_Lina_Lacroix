@@ -1,9 +1,9 @@
 import {useState} from 'react'
 import './App.css';
 import Header from "./components/header";
-import Clients from "./components/Clients";
-import Employes from "./components/Employes";
-import Documents from "./components/Documents";
+import Clients from "./components/client/Clients";
+import Employes from "./components/employe/Employes";
+import Documents from "./components/document/Documents";
 
 function App() {
 

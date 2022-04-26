@@ -2,10 +2,22 @@ import {useState} from 'react'
 import './App.css';
 import Header from "./components/header";
 import Clients from "./components/Clients";
+import Employes from "./components/Employes";
 
 function App() {
 
-  const [clients, setClients] = useState(
+    const [employes, setEmployes] = useState(
+        [
+            {
+                id: 1,
+                nom: "Sabrina",
+                prenom: "Carmier",
+                fonction: "GESTIONNAIRE",
+            }
+        ]
+    )
+
+    const [clients, setClients] = useState(
       [
         {
           id: 1,
@@ -32,7 +44,8 @@ function App() {
   return (
       <div className='container'>
         <Header/>
-        <Clients clients={clients}/>
+          <Clients clients={clients}/>
+          <Employes employes={employes}/>
       </div>
   );
 }

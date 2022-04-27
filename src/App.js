@@ -2,9 +2,9 @@ import {useState} from 'react'
 import './App.css';
 import Header from "./components/header";
 import Clients from "./components/client/Clients";
-import Employes from "./components/employe/Employes";
 import Documents from "./components/document/Documents";
 import AddClient from "./components/client/AddClient";
+import AddDocument from "./components/document/AddDocument";
 
 function App() {
 
@@ -45,6 +45,8 @@ function App() {
         setClients(clients.filter((client) => client.id !== id))
     }
 
+    const [showAddDocument, setShowAddDocument] = useState(false)
+
     const [documents, setDocuments] = useState(
         [
             {
@@ -54,34 +56,60 @@ function App() {
                 titre: "harry potter",
                 auteur: "JK. Rolling",
                 editeur: "maison edition",
-                anneePublication: 2000,
-                nbrExemplaire: 3,
+                anneePublication: "2000",
+                nbrExemplaire: "3",
+            },
+            {
+                id: 2,
+                etatDocument: "ENDOMMAGE",
+                genreDocument: "DVD",
+                titre: "bobby bob",
+                auteur: "lilo lee",
+                editeur: "edition bop",
+                anneePublication: "2018",
+                nbrExemplaire: "5",
+            },
+            {
+                id: 3,
+                etatDocument: "EMPRUNTE",
+                genreDocument: "livre",
+                titre: "avengers",
+                auteur: "Josh whedon",
+                editeur: "marvel",
+                anneePublication: "2020",
+                nbrExemplaire: "2",
             }
         ]
     )
 
-    const [employes, setEmployes] = useState(
-        [
-            {
-                id: 1,
-                nom: "Sabrina",
-                prenom: "Carmier",
-                fonction: "GESTIONNAIRE",
-            }
-        ]
-    )
+    const addDocument = (document) => {
+        const id = Math.floor(Math.random() * 10000) + 1
+        const newDocument = {id, ...document}
+        setDocuments([...documents, newDocument])
+    }
+
+    const deleteDocument = (id) => {
+        setDocuments(documents.filter((document) => document.id !== id))
+    }
 
   return (
       <div className='container'>
-        <Header onAdd={() => setShowAddClient(!showAddClient)}
-        showAdd={showAddClient}/>
+        <Header onAdd={() =>
+            setShowAddClient(!showAddClient)}
+                showAdd={showAddClient}/>
           {showAddClient && <AddClient onAdd={addClient} />}
           {clients.length > 0 ?
               <Clients clients={clients}
               onDelete={deleteClient}/>
               : 'No Clients'}
-          <Employes employes={employes}/>
-          <Documents documents={documents}/>
+          <Header onAdd={() =>
+              setShowAddDocument(!showAddDocument)}
+                  showAdd={showAddDocument}/>
+          {showAddDocument && <AddDocument onAdd={addDocument} />}
+          {documents.length > 0 ?
+              <Documents documents={documents}
+              onDelete={deleteDocument} />
+              : 'No Documents'}
       </div>
   );
 }

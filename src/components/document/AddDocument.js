@@ -69,7 +69,7 @@ const AddDocument = ({onAdd}) => {
             </div>
             <div className='form-control'>
                 <label>Annee de publication</label>
-                <input type='number' placeholder='Annee de publication'
+                <input type='text' placeholder='Annee de publication'
                        value={anneePublication}
                        onChange={(e) => setAnneePublication(e.target.value)}/>
             </div>
